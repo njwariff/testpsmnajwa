@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392494949873",
+    "project_id": "umpintel-db4ad",
+    "storage_bucket": "umpintel-db4ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392494949873:android:6a4c98464f15e0a3181050",
+        "android_client_info": {
+          "package_name": "com.test.testpsm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392494949873-64snusk306qiqogioa10fksre8t4fc8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAImvmnpNf2xpoDMdubQah7e8aEYoRtcBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392494949873-64snusk306qiqogioa10fksre8t4fc8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,40 @@
+name: testpsm
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  provider: ^5.0.0
+  get_storage: ^2.0.3
+  dio: ^4.0.0
+  firebase_core: ^1.5.0
+  firebase_auth: ^3.0.2
+  cloud_firestore: ^2.5.0
+  firebase_storage: ^10.0.3
+  firebase_messaging: ^10.0.5
+  flutter_local_notifications: ^8.1.1+2
+  reactive_forms: ^10.6.0
+  intl: ^0.17.0
+  flutter_slidable: ^1.2.0
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
