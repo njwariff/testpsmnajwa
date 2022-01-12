@@ -4,12 +4,13 @@ import 'package:testpsm/provider/posts.dart';
 import 'package:testpsm/widget/post_widget.dart';
 
 class PostListWidget extends StatelessWidget {
-  var posts;
+
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PostsProvider>(context);
-    //final posts = provider.posts;
+    final posts = provider.posts;
+    //print('posts list :$posts ${posts.isEmpty}');
 
     return posts.isEmpty
         ? Center(

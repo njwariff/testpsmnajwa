@@ -6,14 +6,14 @@ class PostField {
 }
 
 class Post{
-  //DateTime createdTime;
+  DateTime createdTime;
   String title;
   String id;
   String description;
   //bool isDone;
 
   Post({
-    //required this.createdTime,
+    required this.createdTime,
     required this.title,
     this.description = '',
     required this.id,
@@ -21,7 +21,7 @@ class Post{
   });
 
   static Post fromJson(Map<String, dynamic> json) => Post(
-    //createdTime: Utils.toDateTime(json['createdTime']),
+    createdTime: Utils.toDateTime(json['createdTime']),
     title: json['title'],
     description: json['description'],
     id: json['id'],
@@ -29,7 +29,7 @@ class Post{
   );
 
   Map<String, dynamic> toJson() => {
-    //'createdTime': Utils.fromDateTimeToJson(createdTime),
+    'createdTime': Utils.fromDateTimeToJson(createdTime),
     'title': title,
     'description': description,
     'id': id,

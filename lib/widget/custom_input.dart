@@ -4,7 +4,8 @@ import '../constants.dart';
 
 class CustomInput extends StatelessWidget{
   final String hintText;
-  CustomInput({required this.hintText});
+  final TextEditingController? controller;
+  CustomInput({required this.hintText, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,7 @@ class CustomInput extends StatelessWidget{
       child: TextField(
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 24.0,
-            vertical: 18.0
-          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 18.0),
           hintText: hintText,
         ),
         style: Constants.regularDarkText,

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PostFormWidget extends StatelessWidget{
+class PostFormWidget extends StatelessWidget {
   final String title;
   final String description;
   final ValueChanged<String> onChangeTitle;
   final ValueChanged<String> onChangeDescription;
-  final VoidCallback onPostForm;
+  final Function onPostForm;
 
   //constructor
-  const PostFormWidget({
+  PostFormWidget({
     Key? key,
     this.title='',
     this.description='',
@@ -57,7 +57,6 @@ class PostFormWidget extends StatelessWidget{
     maxLines: 3,
     initialValue: description,
     onChanged: onChangeDescription,
-
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
       labelText: 'Description',
@@ -66,13 +65,16 @@ class PostFormWidget extends StatelessWidget{
 
   //for POST button
   Widget buildBtn() => SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ButtonStyle(
+    width: double.infinity,
+    child: ElevatedButton(
+      style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.blue),
       ),
-       child: Text('Post'),
-        onPressed: onPostForm,
+      child: Text('Post'),
+      onPressed: () {
+        print('aaa');
+        onPostForm();
+      },
     ),
   );
 

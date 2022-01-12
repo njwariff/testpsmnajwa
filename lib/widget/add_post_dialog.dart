@@ -30,11 +30,22 @@ class _AddPostDialogWidgetState extends State<AddPostDialogWidget> {
             ),
           ),
           const SizedBox(height: 8),
-          PostFormWidget(
-            onChangeTitle: (title) => setState(() => this.title = title),
-            onChangeDescription: (description) =>
-                setState(() => this.description = description),
-            onPostForm: addPost,
+          // PostFormWidget(
+          //   onChangeTitle: (title) => setState(() => this.title = title),
+          //   onChangeDescription: (description) => setState(() => this.description = description),
+          //   onPostForm: () {
+          //     addPost();
+          //   },
+          // ),
+          ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue),
+            ),
+            child: Text('Post'),
+            onPressed: () {
+              print('aaa');
+              addPost();
+            },
           ),
         ],
       ),
@@ -43,7 +54,6 @@ class _AddPostDialogWidgetState extends State<AddPostDialogWidget> {
 
   void addPost() {
     final isValid = _formKey.currentState!.validate();
-
     if (!isValid) {
       return;
     } else {
@@ -51,7 +61,7 @@ class _AddPostDialogWidgetState extends State<AddPostDialogWidget> {
         id: DateTime.now().toString(),
         title: title,
         description: description,
-        //createdTime: DateTime.now(),
+        createdTime: DateTime.now(),
       );
 
       final provider = Provider.of<PostsProvider>(context, listen: false);

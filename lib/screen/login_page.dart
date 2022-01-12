@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:testpsm/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:testpsm/screen/register_page.dart';
+import 'package:testpsm/services/auth_services.dart';
 import 'package:testpsm/widget/custom_btn.dart';
 import 'package:testpsm/widget/custom_input.dart';
 import '../constants.dart';
+import 'home_two.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,6 +14,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var authHandler = new AuthService();
+  TextEditingController emailctrlr = TextEditingController();
+  TextEditingController passwordctrlr = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -33,36 +40,41 @@ class _LoginPageState extends State<LoginPage> {
               Column(
                 children: [
                   CustomInput(
-                    hintText: "Matric ID",
+                    hintText: "Email ID",
+                    controller: emailctrlr,
                   ),
                   CustomInput(
                     hintText: "Password",
+                    controller: passwordctrlr,
                   ),
                   CustomBtn(
                     text: "Login",
-                    onPressed: (){
+                    onPressed: () {
                       print("Clicked Login Button");
+                      authHandler.handleSignInEmail(emailctrlr.text, passwordctrlr.text).then((User user) {
+                        // Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomeTwo()));
+                        print('user:${user.displayName}');
+                      }).catchError((e) => print(e));
                     },
                     outlinedBtn: true,
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 16.0
-                ),
+                padding: const EdgeInsets.only(bottom: 16.0),
                 child: CustomBtn(
                   text: 'Register',
-                    onPressed: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisterPage(),
-                          ),
-                      );
-                    },
-                  outlinedBtn: true,
-                ),
+                  onPressed: () {
+                  print('aaa');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterPage(),
+                  ),
+                );
+              },
+                outlinedBtn: true,
+              ),
 
               ),
             ],
