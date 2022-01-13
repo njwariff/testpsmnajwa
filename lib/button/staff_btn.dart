@@ -1,15 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:testpsm/screen/staff_page.dart';
+import 'package:testpsm/tab/home_tab.dart';
+import '../constants.dart';
 
 class StaffBtn extends StatelessWidget {
-  const StaffBtn({Key? key}) : super(key: key);
+  StaffBtn({Key? key}) : super(key: key);
+  static  String _title = 'Staff Directory';
 
-  static const String _title = 'Staff Dir';
+  //final CollectionReference _staffRef = FirebaseFirestore.instance.collection("staff");
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
-
-    );
-  }
+      home: Scaffold(
+        appBar: AppBar(title: Text(_title), backgroundColor: Colors.blueGrey,),
+        body: StaffPage(),
+      ),
+     );
+    }
 }

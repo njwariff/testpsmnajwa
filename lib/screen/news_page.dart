@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 class NewsPage extends StatefulWidget {
   final String newsId;
@@ -31,28 +32,34 @@ class _NewsPageState extends State<NewsPage> {
 
               //news ready to shown by id
               if(snapshot.connectionState == ConnectionState.done) {
-                //Map<String, dynamic> documentData = snapshot.data.data();
-                //snapshot.data!.map((document){}).toList();
-                //print(snapshot.data!['title']);
-                //getDocument(snapshot.data);
-                //print('this is widgetID:${widget.newsId}');
-                //print(widget.newsId);
-                return ListView(
+                SingleNews news = SingleNews.fromDocumentSnapshot(snapshot.data);
+              //print it out
+                  print('news picture - ${news.picture}');
+                  print('news title - ${news.title}');
+                  print('news desc - ${news.description}');
 
+
+              //only show if has data
+              if (snapshot.hasData) {
+                return ListView(
                   children: [
-                    //Image.network("${documentData['picture'][0]}",),
-                    Text("Title"),
-                    Text("Description"),
+                    //sebab data type array(list in dart)
+                    for (String url in news.picture) Image.network(url),
+                    //Image.network("${news.picture}",),
+                    Text("${news.title}", style: Constants.regularHeading,),// can now use it here
+                    Text("${news.description}",),
                   ],
                 );
+                } else {
+              return Text('Error:id not found');
+                }
               }
-
 
               //loading state
               return Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
+              body: Center(
+              child: CircularProgressIndicator(),
+              ),
               );
             },
           ),
@@ -60,8 +67,26 @@ class _NewsPageState extends State<NewsPage> {
       ),
     );
   }
-  void getDocument(snapshot)async{
-    var documentData = await snapshot.data.get();
-    print(documentData);
+}
+
+class SingleNews {
+  final List picture;
+  final String title;
+  final String description;
+
+  SingleNews({
+    required this.picture,
+    required this.title,
+    required this.description,
+  });
+
+  factory SingleNews.fromDocumentSnapshot(docSnap) {
+    print('picture : ${docSnap['picture']}');
+    return SingleNews(
+      picture: docSnap['picture'],
+      title: docSnap['title'],
+      description: docSnap['description'],
+    );
   }
 }
+

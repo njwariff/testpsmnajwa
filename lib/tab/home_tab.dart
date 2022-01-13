@@ -38,7 +38,7 @@ class MyStatelessWidget extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const StaffBtn(),
+                    builder: (context) => StaffBtn(),
                   ));
             },
             child: const Icon(Icons.people_alt_rounded),
@@ -50,7 +50,7 @@ class MyStatelessWidget extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ResidentBtn(),
+                    builder: (context) => ResidentBtn(),
                   ));
             },
             child: const Icon(Icons.apartment_rounded),
@@ -86,14 +86,13 @@ class MyStatelessWidget extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ContactBtn(),
+                    builder: (context) => ContactBtn(),
                   ));
             },
             child: const Icon(Icons.call_sharp),
           ),
         ],
       ),
-
     );
   }
 }

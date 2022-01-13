@@ -21,7 +21,7 @@ class PostWidget extends StatelessWidget {
   Widget buildPost(BuildContext context) => GestureDetector(
     //onTap: () => editPost(context, post),
     child: Container(
-      color: Colors.white,
+      color: Colors.grey,
       padding: EdgeInsets.all(20),
       child: Row(
         children: [
@@ -34,7 +34,7 @@ class PostWidget extends StatelessWidget {
               post.title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
+                color: Colors.white,
                 fontSize: 22,
               ),
             ),
@@ -46,7 +46,7 @@ class PostWidget extends StatelessWidget {
                       style: TextStyle(fontSize: 20, height: 1.5),
                     ),
                   ),
-                Text(post.id),
+                //Text(post.id),
                 Text(post.createdTime.toString()),
               ],
             ),
@@ -55,6 +55,7 @@ class PostWidget extends StatelessWidget {
     ),
     ),
   );
+
 
   void deletePost(BuildContext context, Post post) {
     final provider = Provider.of<PostsProvider>(context, listen: false);

@@ -37,6 +37,12 @@ class _LoginPageState extends State<LoginPage> {
                     style: Constants.boldHeading,
                 ),
               ),
+              //Padding(
+                //padding: const EdgeInsets.only(
+                  //top: 10,
+                 // bottom: 190,
+                //),
+              //child:
               Column(
                 children: [
                   CustomInput(
@@ -75,7 +81,6 @@ class _LoginPageState extends State<LoginPage> {
               },
                 outlinedBtn: true,
               ),
-
               ),
             ],
           ),
