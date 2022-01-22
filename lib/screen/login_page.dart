@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:testpsm/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:testpsm/screen/register_page.dart';
 import 'package:testpsm/services/auth_services.dart';
 import 'package:testpsm/widget/custom_btn.dart';
 import 'package:testpsm/widget/custom_input.dart';
@@ -59,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                       print("Clicked Login Button");
                       authHandler.handleSignInEmail(emailctrlr.text, passwordctrlr.text).then((User user) {
                         // Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomeTwo()));
+                        //Navigator.push(context, MaterialPageRoute( builder: (context) => Profile(studentsId:),
                         print('user:${user.displayName}');
                       }).catchError((e) => print(e));
                     },

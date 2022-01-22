@@ -94,7 +94,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       //         ),
       //       ),
       //       Container(
-      //         child: (user == null) ? Text('Home Two User:not logged in') : Text('Home Two Email:${user!.email}'),
+            //child: (user == null) ? Text('Home Two User:not logged in') : Text('Home Two Email:${user!.email}'),
       //       ),
       //     ],
       //   ),
@@ -140,7 +140,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Profile(),
+                    //builder: (context) => Profile(studentsId: '',),
+                    builder: (context) => Memo(),
                   ));
             },
             child: const Icon(Icons.info, semanticLabel: "user profile",),
