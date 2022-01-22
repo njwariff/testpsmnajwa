@@ -37,12 +37,12 @@ class _LoginPageState extends State<LoginPage> {
                     style: Constants.boldHeading,
                 ),
               ),
-              //Padding(
-                //padding: const EdgeInsets.only(
-                  //top: 10,
-                 // bottom: 190,
-                //),
-              //child:
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                 bottom: 190,
+                ),
+              child:
               Column(
                 children: [
                   CustomInput(
@@ -66,21 +66,21 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: CustomBtn(
-                  text: 'Register',
-                  onPressed: () {
-                  print('aaa');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegisterPage(),
-                  ),
-                );
-              },
-                outlinedBtn: true,
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 16.0),
+              //   child: CustomBtn(
+              //     text: 'Register',
+              //     onPressed: () {
+              //     print('aaa');
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => RegisterPage(),
+              //     ),
+              //   );
+              // },
+              //   outlinedBtn: true,
+              // ),
               ),
             ],
           ),

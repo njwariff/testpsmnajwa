@@ -19,7 +19,6 @@ class PostWidget extends StatelessWidget {
   );
 
   Widget buildPost(BuildContext context) => GestureDetector(
-    //onTap: () => editPost(context, post),
     child: Container(
       color: Colors.grey,
       padding: EdgeInsets.all(20),

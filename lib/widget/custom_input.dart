@@ -20,6 +20,7 @@ class CustomInput extends StatelessWidget{
         borderRadius: BorderRadius.circular(9.0),
       ),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 18.0),

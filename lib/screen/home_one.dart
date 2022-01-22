@@ -83,7 +83,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: (user == null) ? 'Login' : 'Logged In',
+            label: (user == null) ? 'Login' : 'User',
           ),
         ],
         currentIndex: _selectedIndex,

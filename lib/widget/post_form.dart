@@ -1,5 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:testpsm/model/post.dart';
+import 'package:testpsm/provider/posts.dart';
+
+import '../utils.dart';
 
 class PostFormWidget extends StatelessWidget {
   final String title;
@@ -78,4 +83,11 @@ class PostFormWidget extends StatelessWidget {
     ),
   );
 
+}
+
+void deletePost(BuildContext context, Post post) {
+  final provider = Provider.of<PostsProvider>(context, listen: false);
+  provider.removePost(post);
+
+  Utils.showSnackBar(context, 'Deleted the announcement');
 }

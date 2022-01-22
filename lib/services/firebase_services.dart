@@ -70,6 +70,16 @@ class FirebaseApi {
       .instance
       .collection("resident");
 
+  final CollectionReference MemoRef = FirebaseFirestore
+      .instance
+      .collection("memo");
 
+  final CollectionReference EventRef = FirebaseFirestore
+      .instance
+      .collection("event");
+
+  final CollectionReference StudentsRef = FirebaseFirestore
+      .instance
+      .collection("students");
 
   }

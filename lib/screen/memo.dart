@@ -2,19 +2,36 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testpsm/constants.dart';
 import 'package:testpsm/screen/news_page.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:testpsm/screen/view_memo.dart';
 
-class ContactPage extends StatelessWidget {
+class Memo extends StatelessWidget {
 
-  final CollectionReference _contactRef = FirebaseFirestore.instance.collection("contact");
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Memo'), backgroundColor: Colors.brown,),
+        body: const MyStatefulWidget(),
+      ),
+    );
+  }
+}
 
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+
+  final CollectionReference _memoRef = FirebaseFirestore.instance.collection("memo");
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Stack(
         children: [
           FutureBuilder<QuerySnapshot>(
-            future: _contactRef.get(),
+            future: _memoRef.get(),
             builder: (context,snapshot) {
               if (snapshot.hasError) {
                 return Scaffold(
@@ -36,19 +53,14 @@ class ContactPage extends StatelessWidget {
                           child: ListTile(
                             //leading: FlutterLogo(),
                             title: Text(
-                              "${document['name']}",
+                              "${document['title']}",
                               style: Constants.regularHeading,
                             ),
-                            subtitle: Text(
-                              "${document['phone']}",
-                            ),
-                            trailing: FloatingActionButton(
-                              onPressed: ()  {
-                                launch(('tel://${document['phone']}'));
-                              },
-                              child: const Icon(Icons.call),
-                              backgroundColor: Colors.black,
-                            ),
+                            trailing: Icon(Icons.navigate_next,),
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => ViewMemo(memoId: document.id,),
+                              ));},
                           ),
                         ),
                       ],
@@ -59,6 +71,7 @@ class ContactPage extends StatelessWidget {
 
               //loading state
               return Scaffold(
+
                 body: Center(
                   child: CircularProgressIndicator(),
                 ),
