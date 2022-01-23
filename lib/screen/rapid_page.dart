@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testpsm/tab/home_tab.dart';
+import 'package:url_launcher/link.dart';
 
 import '../constants.dart';
 
@@ -53,8 +54,26 @@ class RapidPage extends StatelessWidget {
                                 Image.network(
                                   "${document['image'][0]}",
                                   fit: BoxFit.cover,
-
                                 ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              right: 50,
+                              child: Column(
+                                children: [
+                                  Text('More Rapid Information:', style: Constants.regularHeading,),
+                                  Link(
+                                    target: LinkTarget.blank,
+                                    uri: Uri.parse("${document['url']}",),
+                                    builder: (context, followLink) =>
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Colors.transparent,
+                                            ),
+                                            onPressed: followLink, child: Text('Click Here')),
+                                  ),
+                                ],
                               ),
                             ),
 

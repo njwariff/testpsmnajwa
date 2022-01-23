@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:testpsm/constants.dart';
 import 'package:testpsm/screen/news_page.dart';
 
+import 'event_page.dart';
+
 class Event extends StatelessWidget {
 
   @override
@@ -46,7 +48,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 print(snapshot.data);
                 return ListView(
                   children: snapshot.data!.docs.map((document){
-                    return Column(
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => EventPage(eventId: document.id,),
+                        ));
+                      },
+                    child:
+                      Column(
                       children: [
                         // SizedBox(
                         //   width: 20,
@@ -58,7 +67,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           padding: EdgeInsets.all(10),
                           height: 100,
                           decoration: BoxDecoration(
-                            color: Colors.white70,
+                            color: Colors.grey.withOpacity(0.2),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child:
@@ -76,65 +85,65 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                     "${document['month']}",
                                     //style: Constants.regularHeading,
                                   ),
-                                  // Text(
-                                  //   "Jan",
-                                  //   style: TextStyle(fontWeight: FontWeight.bold),
-                                  // ),
                                 ],
                               ),
                               SizedBox(
-                                width: 2,
+                                width: 5,
                               ),
                               Container(
                                 height: 100,
                                 width: 1,
                                 color: Colors.grey.withOpacity(0.5),
                               ),
+                              SizedBox(width: 5,),
                               Column(
-                                //crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                                 children: [
                                   Text(
-                                    "${document['title']}",
+                                    "${document['titlefront']}",
                                     //style: Constants.regularHeading,
                                   ),
-                                  // Row(
-                                  //   children: [
-                                  //     Icon(Icons.pin_drop_sharp,
-                                  //       color: Colors.black,
-                                  //       size: 20,),
-                                  //     SizedBox(
-                                  //       width: 5,
-                                  //     ),
-                                  //     Text(
-                                  //       "${document['Venue']}",
-                                  //       //style: Constants.regularHeading,
-                                  //     ),
-                                  //   ],
-                                  // ),
-                                  // Row(
-                                  //   children: [
-                                  //     Icon(Icons.access_time_outlined,
-                                  //       color: Colors.black,
-                                  //       size: 20,),
-                                  //     SizedBox(
-                                  //       width: 5,
-                                  //     ),
-                                  //     Text(
-                                  //       "${document['time']}",
-                                  //       //style: Constants.regularHeading,
-                                  //     ),
-                                  //   ],
-                                  //),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.pin_drop_sharp,
+                                        color: Colors.black,
+                                        size: 20,),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        "${document['Venue']}",
+                                        //style: Constants.regularHeading,
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.access_time_outlined,
+                                        color: Colors.black,
+                                        size: 20,),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        "${document['time']}",
+                                        //style: Constants.regularHeading,
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ),
                         SizedBox(
+                          width: 2,
                           height: 20,
                         ),
                       ],
+                      ),
                     );
                   }).toList(),
                 );

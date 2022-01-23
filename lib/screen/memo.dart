@@ -10,7 +10,7 @@ class Memo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Memo'), backgroundColor: Colors.brown,),
+        //appBar: AppBar(title: Text('Memo'), backgroundColor: Colors.brown,),
         body: const MyStatefulWidget(),
       ),
     );
@@ -27,7 +27,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   final CollectionReference _memoRef = FirebaseFirestore.instance.collection("memo");
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(title: Text('Memo'), backgroundColor: Colors.brown,),
+      body:
+      Container(
       child: Stack(
         children: [
           FutureBuilder<QuerySnapshot>(
@@ -79,6 +82,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             },
           ),
         ],
+      ),
       ),
     );
   }

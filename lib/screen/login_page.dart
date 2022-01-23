@@ -49,6 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                     controller: emailctrlr,
                   ),
                   CustomInput(
+
                     hintText: "Password",
                     controller: passwordctrlr,
                   ),
@@ -57,8 +58,6 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       print("Clicked Login Button");
                       authHandler.handleSignInEmail(emailctrlr.text, passwordctrlr.text).then((User user) {
-                        // Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomeTwo()));
-                        //Navigator.push(context, MaterialPageRoute( builder: (context) => Profile(studentsId:),
                         print('user:${user.displayName}');
                       }).catchError((e) => print(e));
                     },

@@ -28,6 +28,7 @@ class PostWidget extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
               Text(
               post.title,
@@ -45,12 +46,29 @@ class PostWidget extends StatelessWidget {
                       style: TextStyle(fontSize: 20, height: 1.5),
                     ),
                   ),
-                //Text(post.id),
                 Text(post.createdTime.toString()),
+                SizedBox(height: 10,),
+                // ElevatedButton(
+                //   style: ElevatedButton.styleFrom(
+                //     primary: Colors.grey,
+                //   ),
+                //   onPressed: () => deletePost(context, post),
+                //   child: const Icon(Icons.delete_rounded, semanticLabel: "delete",),),
+                //Text(post.id),
               ],
             ),
           ),
+      Row(
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey,
+              ),
+              onPressed: () => deletePost(context, post),
+              child: const Icon(Icons.delete_rounded, semanticLabel: "delete",),),
       ]
+    ),
+    ],
     ),
     ),
   );

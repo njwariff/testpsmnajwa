@@ -10,6 +10,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  animated_splash_screen:
+
+
+  flutter_search_bar: ^2.1.0
+
   cupertino_icons: ^1.0.2
   provider: ^5.0.0
   get_storage: ^2.0.3

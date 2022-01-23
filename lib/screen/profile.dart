@@ -1,200 +1,130 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/material.dart';
-// import 'package:testpsm/constants.dart';
-// import 'package:testpsm/screen/news_page.dart';
-//
-// class Profile extends StatefulWidget {
-//   final String studentsId;
-//   Profile({required this.studentsId});
-//
-//   @override
-//   _ProfileState createState() => _ProfileState();
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(title: Text('My Profile'), backgroundColor: Colors.brown,),
-//         body: Profile(studentsId: "Welcome: ${studentsId}"),
-//       ),
-//     );
-//   }
-// }
-//
-//
-// // class MyStatefulWidget extends StatefulWidget {
-// //
-// //   const MyStatefulWidget({Key? key}) : super(key: key);
-// //   @override
-// //   State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-// // }
-//
-// class _ProfileState extends State<Profile> {
-//   final CollectionReference _profileRef = FirebaseFirestore.instance.collection("students");
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//       child: Stack(
-//         children: [
-//           FutureBuilder<QuerySnapshot>(
-//            // future: _profileRef.doc(widget.studentsId).get(),
-//             builder: (context,snapshot) {
-//               if (snapshot.hasError) {
-//                 return Scaffold(
-//                   body: Center(
-//                     child: Text("Error: ${snapshot.error}"),
-//                   ),
-//                 );
-//               }
-//
-//               //students ready to shown by id
-//               if (snapshot.connectionState == ConnectionState.done) {
-//                 SingleStudents students = SingleStudents.fromDocumentSnapshot(
-//                     snapshot.data);
-//                 //print it out
-//                 print('students picture - ${students.picture}');
-//                 print('students name - ${students.name}');
-//                 print('students matric - ${students.matric}');
-//
-//
-//                 //collection data ready to display
-//                 if (snapshot.connectionState == ConnectionState.done) {
-//                   //display profile (data) dalam list view
-//                   print(snapshot.data);
-//                   return ListView(
-//                     children: snapshot.data!.docs.map((document) {
-//                       return DataTable(
-//                         columns:  <DataColumn>[
-//                           //for (String url in students.picture) Image.network(url),
-//                           DataColumn(
-//                             label: Text(
-//                               'Name',
-//                               //style: TextStyle(fontStyle: FontStyle.italic),
-//                             ),
-//                           ),
-//                           DataColumn(
-//                             label: Text(
-//                               "${students.name}",
-//                               //style: TextStyle(fontStyle: FontStyle.italic),
-//                             ),
-//                           ),
-//                         ],
-//                         rows:  <DataRow>[
-//                           DataRow(
-//                             cells: <DataCell>[
-//                               DataCell(Text('Student ID'),),
-//                               DataCell(Text("${students.matric}",)),
-//                             ],
-//                           ),
-//                           DataRow(
-//                             cells: <DataCell>[
-//                               DataCell(Text('IC')),
-//                               DataCell(Text('970827035760')),
-//                             ],
-//                           ),
-//                           DataRow(
-//                             cells: <DataCell>[
-//                               DataCell(Text('Faculty')),
-//                               DataCell(Text('Faculty of Computer')),
-//                             ],
-//                           ),
-//                           DataRow(
-//                             cells: <DataCell>[
-//                               DataCell(Text('Course')),
-//                               DataCell(Text(
-//                                   'BCS - SARJANA MUDA SAINS KOMPUTER (KEJURUTERAAN PERISIAN) DENGAN KEPUJIAN')),
-//                             ],
-//                           ),
-//                           DataRow(
-//                             cells: <DataCell>[
-//                               DataCell(Text('Email')),
-//                               DataCell(Text('njwarff@gmail.com')),
-//                             ],
-//                           ),
-//                           DataRow(
-//                             cells: <DataCell>[
-//                               DataCell(Text('Advisor')),
-//                               DataCell(Text('Mohd Zamri Bin Osman')),
-//                             ],
-//                           ),
-//                         ],
-//                       );
-//                       //   child: Container(
-//                       //     decoration: BoxDecoration(
-//                       //       borderRadius: BorderRadius.circular(12.0),
-//                       //     ),
-//                       //     height: 350.0,
-//                       //     margin: EdgeInsets.symmetric(
-//                       //       vertical: 12.0,
-//                       //       horizontal: 24.0,
-//                       //     ),
-//                       //     child: Stack(
-//                       //       children: [
-//                       //         Container(
-//                       //           height: 330.0,
-//                       //           child: ClipRRect(
-//                       //             borderRadius: BorderRadius.circular(12.0),
-//                       //             child:
-//                       //             //Text("${document['title']}"),
-//                       //             Image.network(
-//                       //               "${document['picture'][0]}",
-//                       //               fit: BoxFit.cover,
-//                       //
-//                       //             ),
-//                       //           ),
-//                       //         ),
-//                       //         Positioned(
-//                       //           bottom: 0,
-//                       //           child: Row(
-//                       //             children: [
-//                       //               Text("${document['title']}", style: Constants.regularHeading,),
-//                       //             ],
-//                       //           ),
-//                       //         ),
-//                       //       ],
-//                       //     ),
-//                       //   ),
-//                       // );
-//                     }).toList(),
-//                   );
-//                 }
-//
-//                 //loading state
-//                 return Scaffold(
-//                   body: Center(
-//                     child: CircularProgressIndicator(),
-//                   ),
-//                 );
-//               };
-//             },
-//           ),
-//         ],
-//       ),
-//     ),
-//     );
-//   }
-// }
-//
-//
-// class SingleStudents {
-//   final List picture;
-//   final String name;
-//   final String matric;
-//
-//   SingleStudents({
-//     required this.picture,
-//     required this.name,
-//     required this.matric,
-//   });
-//
-//   factory SingleStudents.fromDocumentSnapshot(docSnap) {
-//     print('picture : ${docSnap['picture']}');
-//     return SingleStudents(
-//       picture: docSnap['picture'],
-//       name: docSnap['name'],
-//       matric: docSnap['matric'],
-//     );
-//   }
-// }
+import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:testpsm/constants.dart';
+
+
+class Profile extends StatefulWidget {
+  final String studentsEmail;
+  Profile({required this.studentsEmail});
+
+  @override
+  _ProfileState createState() => _ProfileState();
+
+}
+
+class _ProfileState extends State<Profile> {
+  final CollectionReference _profileRef = FirebaseFirestore.instance.collection("students");
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('My Profile'), backgroundColor: Colors.brown,),
+      body: Container(
+      child: Stack(
+        children: [
+          FutureBuilder<QuerySnapshot>(
+           future: _profileRef.where('email',isEqualTo:widget.studentsEmail).get(),
+            builder: (context,snapshot) {
+              if (snapshot.hasError) {
+                return Scaffold(
+                  body: Center(
+                    child: Text("Error: ${snapshot.error}"),
+                  ),
+                );
+              }
+
+              //students ready to shown by id
+              if (snapshot.connectionState == ConnectionState.done) {
+                SingleStudents student = SingleStudents.fromDocumentSnapshot(
+                    snapshot.data!.docs);
+                //print it out
+                print('students picture - ${student.picture}');
+                print('students name - ${student.name}');
+                print('students matric - ${student.matric}');
+                print('students ic - ${student.ic}');
+                print('students advisor - ${student.advisor}');
+                print('students course - ${student.course}');
+                print('students faculty - ${student.faculty}');
+
+
+                //collection data ready to display
+                if (snapshot.connectionState == ConnectionState.done) {
+                  //display profile (data) dalam list view
+                  print(snapshot.data);
+                  return ListView(
+                    children: [
+
+                      //sebab data type array(list in dart)
+                      for (String url in student.picture) Image.network(url),
+                      SizedBox(height: 10,),
+                      Text('Name      : '"${student.name}", style: Constants.regularHeading,),
+                      SizedBox(height: 5,),
+                      Text('Student ID: '"${student.matric}", style: Constants.regularHeading,),
+                      SizedBox(height: 5,),
+                      Text('IC        : '"${student.ic}", style: Constants.regularHeading,),
+                      SizedBox(height: 5,),
+                      Text('Course    : '"${student.course}", style: Constants.regularHeading,),
+                      SizedBox(height: 5,),
+                      Text('Faculty   : '"${student.faculty}", style: Constants.regularHeading,),
+                      SizedBox(height: 5,),
+                      Text('Advisor   : '"${student.advisor}", style: Constants.regularHeading,),
+
+                    ],
+
+                  );
+                }
+
+
+              };
+              //loading state
+              return Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    ),
+    );
+  }
+}
+
+
+class SingleStudents {
+  final List picture;
+  final String name;
+  final String matric;
+  final String ic;
+  final String course;
+  final String advisor;
+  final String faculty;
+
+  SingleStudents({
+    required this.picture,
+    required this.name,
+    required this.matric,
+    required this.ic,
+    required this.course,
+    required this.advisor,
+    required this.faculty,
+
+  });
+
+  factory SingleStudents.fromDocumentSnapshot(docSnap) {
+    print('data : ${docSnap[0].data()}');
+
+    return SingleStudents(
+      picture: docSnap[0].data()['picture'],
+      name: docSnap[0].data()['name'],
+      matric: docSnap[0].data()['matric'],
+      ic: docSnap[0].data()['ic'],
+      course: docSnap[0].data()['course'],
+      advisor: docSnap[0].data()['advisor'],
+      faculty: docSnap[0].data()['faculty'],
+    );
+  }
+
+}

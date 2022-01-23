@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:testpsm/screen/view_resident.dart';
 import 'package:testpsm/tab/home_tab.dart';
 
 import '../constants.dart';
@@ -34,7 +35,14 @@ class ResidentPage extends StatelessWidget {
                 print(snapshot.data);
                 return ListView(
                   children: snapshot.data!.docs.map((document){
-                    return Container(
+                    return GestureDetector(
+                        onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => ViewResident(residentId: document.id,),
+                      ));
+                    },
+                    child:
+                      Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
@@ -60,6 +68,7 @@ class ResidentPage extends StatelessWidget {
                             ),
                             Positioned(
                               bottom: 0,
+                              right: 50,
                               child: Row(
                                 children: [
                                   Text("${document['name']}", style: Constants.regularHeading,),
@@ -68,6 +77,7 @@ class ResidentPage extends StatelessWidget {
                             ),
                           ],
                         ),
+                      ),
                     );
                   }).toList(),
                 );

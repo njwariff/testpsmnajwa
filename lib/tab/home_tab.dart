@@ -110,6 +110,12 @@ class MyStatelessWidget extends StatelessWidget {
                 color: Colors.lightBlue,
                 borderRadius: BorderRadius.circular(30),
             ),
+             child: GestureDetector(
+              onTap: (){
+              Navigator.push(context, MaterialPageRoute(
+              builder: (context) => Event(),
+              ));
+              },
             child: Column(
               children: [
                 // SizedBox(
@@ -130,6 +136,7 @@ class MyStatelessWidget extends StatelessWidget {
                       SizedBox(
                         height: 15,
                       ),
+                      //untuk route to page event
                       Container(
                         padding: EdgeInsets.all(10),
                         height: 100,
@@ -138,14 +145,13 @@ class MyStatelessWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child:
-                        // child: Event(),
                         Row(
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                    "date",
+                                    "24",
                                       style: TextStyle(fontWeight: FontWeight.bold),
                                     ),
                                Text(
@@ -154,20 +160,25 @@ class MyStatelessWidget extends StatelessWidget {
                                     ),
                                   ],
                                   ),
+                                  SizedBox(width: 5,),
                                   Container(
                                     height: 100,
                                     width: 1,
                                     color: Colors.grey.withOpacity(0.5),
                                    ),
+                                  SizedBox(width: 5,),
                                   Column(
-                                    //crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                     Text(
-                                    "Titleeee",
+                                    "PROGRAM CERAMAH FARMASI",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
-
+                                      Text(
+                                        "BERSAMA MASYARAKAT",
+                                        style: TextStyle(fontWeight: FontWeight.bold),
+                                      ),
                                   Row(
                                     children: [
                                     Icon(Icons.pin_drop_sharp,
@@ -177,7 +188,7 @@ class MyStatelessWidget extends StatelessWidget {
                                         width: 5,
                                         ),
                                     Text(
-                                    "tempatt zoom ump gambang",
+                                    "Google Meet Application",
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                         ),
                                       ],
@@ -191,7 +202,7 @@ class MyStatelessWidget extends StatelessWidget {
                                             width: 5,
                                           ),
                                           Text(
-                                            "08:00 PM",
+                                            "02:00 PM",
                                             style: TextStyle(fontWeight: FontWeight.bold),
                                           ),
                                         ],
@@ -219,6 +230,7 @@ class MyStatelessWidget extends StatelessWidget {
                     ],
             ),
       ),
+        ),
         ),
       ],
     ),
